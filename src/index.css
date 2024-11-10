@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-300% animate-gradient;
+}
+
+.bg-gradient-animate {
+  background-size: 300%;
+  animation: gradient 15s ease infinite;
+}
+
+.nav-link {
+  @apply relative text-gray-600 hover:text-blue-600 transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.project-card {
+  @apply relative transition-all duration-500;
+}
+
+.project-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 transition-opacity duration-300 rounded-xl -z-10;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card:hover::before {
+  @apply opacity-100;
+}
+
+.skill-icon {
+  @apply transition-all duration-300 hover:scale-110 hover:rotate-6;
+}
+
+.section-animate {
+  animation: slideUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.card-animate {
+  animation: scaleIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.text-gradient-hover {
+  @apply transition-all duration-300;
+}
+
+.text-gradient-hover:hover {
+  @apply gradient-text;
+}
+
+.button-glow {
+  @apply relative overflow-hidden;
+}
+
+.button-glow::after {
+  content: '';
+  @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+}
+
+.button-glow:hover::after {
+  @apply opacity-20;
+}
